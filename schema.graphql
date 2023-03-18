@@ -1,0 +1,102 @@
+type ExampleEntity @entity {
+  id: ID!
+  count: BigInt!
+  userOpHash: Bytes! # bytes32
+  sender: Bytes! # address
+}
+
+# type EntryPoint @entity {
+#   id: ID!
+#   userOperationCount: BigInt!
+#   userSmartAccountCount: BigInt!
+#   uniqueSmartAccountCount: BigInt!
+#   userOpHash: Bytes! # bytes32
+#   sender: Bytes! # address
+# }
+
+type UserOperation @entity {
+  id: ID!
+  sender: String # address
+  nonce: BigInt
+  initCode: Bytes
+  callData: Bytes
+  callGasLimit: BigInt
+  verificationGasLimit: BigInt
+  preVerificationGas: BigInt
+  maxPriorityFeePerGas: BigInt
+  paymasterAndData: Bytes
+  signature: Bytes
+  beneficiary: String # address
+  userOpHash: String
+  paymaster: String
+  success: Boolean
+  maxFeePerGas: BigInt
+  actualGasCost: BigInt
+  actualGasUsed: BigInt
+  timestamp: BigInt
+  revertReason: String
+  txHash: String
+  opIndex: BigInt
+  reason: String
+}
+
+type User
+  @entity { #SENDER as USER entity
+  id: ID!
+  operationsCount: BigDecimal
+  operations: [UserOperation!] # bytes32
+  nonce: BigDecimal
+  totalOps: BigDecimal # address
+  totalOpsReverted: BigDecimal # address
+  totalOpsFailed: BigDecimal # address
+  beneficiary: String # address
+  factory: String # address
+  userOpHash: String # address
+  paymaster: String # address
+  timestamp: BigInt!
+  txHash: String
+  deposits: [Deposit!]
+  withdrawals: [Withdraw!]
+  stakes:[Stake!]
+}
+
+type SignatureAggregator @entity {
+  id: ID!
+  aggregator: String
+  txHash: String
+  timestamp: BigInt
+}
+
+type Deposit @entity {
+  id: ID!
+  totalDeposit: BigInt
+  txHash: String
+  timestamp: BigInt
+  account: String
+  txFrom: String
+  txTo: String
+}
+type Withdraw @entity {
+  id: ID!
+  totalWithdraw: BigInt
+  txHash: String
+  timestamp: BigInt
+  account: String
+  withdrawAddress: String
+  txFrom: String
+  txTo: String
+}
+type Stake @entity {
+  id: ID!
+  totalStaked: BigInt
+  unstakeDelaySec: BigInt
+  withdrawTime: BigInt
+  amount: BigInt
+  type:String
+  txHash: String
+  timestamp: BigInt
+  account: String
+  withdrawAddress: String
+  txFrom: String
+  txTo: String
+}

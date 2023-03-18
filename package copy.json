@@ -1,0 +1,17 @@
+{
+  "name": "erc4337-subgraph",
+  "license": "UNLICENSED",
+  "scripts": {
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "deploy": "graph deploy --product hosted-service --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ <YOUR ACCOUNT>/erc-4337 --access-token <YOUR ACCESS TOKEN>",
+    "deploy:goerli": "graph deploy --product hosted-service --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ <YOUR ACCOUNT>/erc4337-goerli --access-token <YOUR ACCESS TOKEN>",
+    "create-local": "graph create --node http://localhost:8020/ erc4337-subgraph",
+    "remove-local": "graph remove --node http://localhost:8020/ erc4337-subgraph",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 erc4337-subgraph"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-cli": "^0.42.4",
+    "@graphprotocol/graph-ts": "^0.29.3"
+  }
+}
